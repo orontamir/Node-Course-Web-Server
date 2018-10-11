@@ -9,7 +9,7 @@ app.use((req,res,next) => {
   var now = new Date().toString();
   var log = `${now}: ${req.method} ${req.url} `;
   console.log(`${log}`);
-  fs.appendFile('Server log ',log + '\n', (err) => {
+  fs.appendFile('Server.log',log + '\n', (err) => {
     if (err)
     {
       console.log('Unable to append the server');
@@ -45,10 +45,14 @@ app.get('/about',(req,res) => {
   });
   //res.send('About page');
 });
-
+app.get('/project', (req,res) => {
+  res.render('project.hbs', {
+      PageTitle: 'Projects'
+  });
+});
 app.get('/bed',(req,res) => {
   res.send({
-    errorMessage: 'Unable to range request' 
+    errorMessage: 'Unable to range request'
   });
 });
 
