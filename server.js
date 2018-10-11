@@ -1,6 +1,7 @@
 const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
+const port = process.env.PORT || 3000;
 hbs.registerPartials(__dirname + '/views/partials');
 var app = express();
 app.use(express.static(__dirname + '/public'));
@@ -47,8 +48,10 @@ app.get('/about',(req,res) => {
 
 app.get('/bed',(req,res) => {
   res.send({
-    errorMessage: 'Unable to range request'
+    errorMessage: 'Unable to range request' 
   });
 });
 
-app.listen(3000);
+app.listen(port, ()=> {
+  console.log(`Unable connecting to port ${port}`);
+});
